@@ -2,3 +2,4 @@
 
   publish = "/build"
   command = "CI=false npm run build"
+  functions = "/functions"
