@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useScore } from "../contexts/ScoreContext";
 import { StyledLink } from "../styled/Navbar";
 import { StyledCharacter } from "../styled/Game";
+import { StyledTitle } from "../styled/Random";
 
-const HameOver = ({ history }) => {
+const GameOver = ({ history }) => {
   const [score] = useScore();
   const [scoreMessage, setScoreMessage] = useState("");
   if (score === -1) {
@@ -28,17 +29,20 @@ const HameOver = ({ history }) => {
       }
     };
     saveHighScore();
-    return saveHighScore;
-  }, []);
+  }, [score]);
   return (
     <div>
-      <h1>Game Over</h1>
+      <StyledTitle>Game Over</StyledTitle>
+      <h2>{scoreMessage}</h2>
       <StyledCharacter>{score}</StyledCharacter>
-      <p>{scoreMessage}</p>
-      <StyledLink to="/">Go Home</StyledLink>
-      <StyledLink to="/game">Play again?</StyledLink>
+      <div>
+        <StyledLink to="/">Go Home</StyledLink>
+      </div>
+      <div>
+        <StyledLink to="/game">Play again?</StyledLink>
+      </div>
     </div>
   );
 };
 
-export default HameOver;
+export default GameOver;
